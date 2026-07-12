@@ -18,16 +18,32 @@ Welcome to the **AI Choice Adventure**! This is a state-of-the-art, interactive 
 
 ---
 
-## 🛠️ Tech Stack: What I Used
+## 🎮 Core Gameplay & Web3 Features
 
-The application is built on a modern, high-performance web development stack:
-1. **Frontend Core**: **React 18** with **TypeScript** for rock-solid type safety and reusable component architecture.
-2. **Build Tooling**: **Vite** for fast hot module replacement (HMR) and optimized building.
-3. **Styling**: **Tailwind CSS** for a premium glassmorphic dark mode design and responsive layouts.
-4. **Animations**: **Framer Motion** for card transitions and layout layout fades.
-5. **Generative AI**: **Google Gemini 3.5 Flash** to power the story beats, generate option tags, and calculate dynamic score impacts.
-6. **Database & Leaderboard**: **Supabase** (PostgREST + Postgres) to retrieve, order, and save high scores.
-7. **Web3 Cardano Integration**: **Mesh SDK** (Core & React hooks) to interface with CIP-30 wallets (like Eternl or Lace) and structure metadata transactions.
+### 📈 Dynamic Fate Scoring (Based on Your Story Decisions)
+The game tracks your "Fate Points" throughout the 5-round adventure. Each time you choose a path:
+* The Gemini AI evaluates the situation and the consequence of your choice.
+* The score increases or decreases dynamically (by up to 10 points per round) based on the danger, magic, or wisdom of your action.
+* Your final cumulative score represents your survival rating and serves as the baseline for your certificate's value and your ranking on the global leaderboard.
+
+### ⛓️ On-Chain Metadata Transactions
+Upon completing all five rounds, you can write your unique adventure history to the blockchain:
+* The app connects to your Cardano wallet (Lace, Eternl, etc.) on the Preprod Testnet.
+* It constructs a transaction sending a small ADA fee (1.5 tADA) to your own address.
+* Crucially, the transaction includes custom **metadata** (Label `674`). This metadata embeds your final score, the adventure realm, the date/time, and a chronological recap of all five round choices you made.
+* Once you sign the transaction, it is broadcast to the ledger, creating a permanent, cryptographically verified record of your accomplishment.
+
+### 📜 Automated Certificate Generation
+Once the transaction is successfully submitted to the ledger:
+* The app retrieves the transaction hash (`txHash`).
+* It automatically compiles a premium **Quest Certificate** card in the UI.
+* The certificate binds your player name, the realm theme, the final score, the date, and the transaction hash into a premium glassmorphic display.
+
+### 📥 High-Resolution Certificate Downloads
+Beside the leaderboard at the bottom of the screen, you can instantly download a physical copy of your certificate:
+* Clicking the **"Download PNG"** button triggers a background canvas renderer.
+* It draws a high-resolution (`1200x800`) certificate featuring custom theme gradients (e.g. golden for fantasy, cosmic blue for space, neon green for cyberpunk), ornamental patterns, a verified seal, and the transaction hash.
+* It exports this canvas as a high-quality PNG image and downloads it automatically to your device.
 
 ---
 
