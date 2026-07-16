@@ -130,3 +130,32 @@ In the configuration screen, make sure to adjust these settings:
 
 ### Step 3: Deploy!
 Click **"Deploy"**. Vercel will build the frontend assets, host the `/api/generate-story` serverless function, and generate a live URL for your choice adventure game.
+
+---
+
+## 🚀 Deployment on Render
+
+To deploy this project on Render, follow these steps to deploy it as a **Web Service** (so both the static frontend and the Node-based Gemini AI server API run together):
+
+### Step 1: Create a New Web Service on Render
+1. Sign in to your [Render Dashboard](https://dashboard.render.com/) and click **"New +" ➔ "Web Service"**.
+2. Connect your GitHub account and select your repository: `shrutikeshri2021/IndiaCodex-2026`.
+
+### Step 2: Configure Web Service Settings
+During setup, fill in the following parameters:
+1. **Name**: `ai-choice-adventure`
+2. **Language**: `Node`
+3. **Region**: Choose the region closest to you
+4. **Branch**: `main`
+5. **Root Directory**: `codex` *(Important: This points to the subfolder containing your code)*
+6. **Build Command**: `npm run build`
+7. **Start Command**: `npm run start` *(Runs the production preview server bound to 0.0.0.0 and the port $PORT)*
+
+### Step 3: Add Environment Variables
+Scroll down, click **"Advanced" ➔ "Add Environment Variable"**, and add the following keys:
+* `GOOGLE_AI_API_KEY` = *[Your Gemini API Key]*
+* `VITE_SUPABASE_URL` = *[Your Supabase URL]*
+* `VITE_SUPABASE_ANON_KEY` = *[Your Supabase Anon Key]*
+
+### Step 4: Deploy!
+Click **"Create Web Service"**. Render will build the assets and start serving your application.
