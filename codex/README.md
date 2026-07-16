@@ -108,3 +108,25 @@ Boot up the application:
 npm run dev
 ```
 Open [http://localhost:5173](http://localhost:5173) in your browser to begin your adventure!
+
+---
+
+## ☁️ Deployment on Vercel
+
+You can deploy this project to Vercel in just a few clicks by linking your GitHub repository:
+
+### Step 1: Import Project to Vercel
+1. Go to the [Vercel Dashboard](https://vercel.com/dashboard) and click **"Add New" ➔ "Project"**.
+2. Link your GitHub account and import the repository `shrutikeshri2021/IndiaCodex-2026`.
+
+### Step 2: Configure Project Settings
+In the configuration screen, make sure to adjust these settings:
+1. **Root Directory**: Click "Edit" and select the **`codex`** folder. (This tells Vercel to build the frontend and run the serverless function relative to the `codex/` subfolder).
+2. **Framework Preset**: Vercel will automatically detect **Vite**.
+3. **Environment Variables**: Expand the environment variables section and add the following keys:
+   * `GOOGLE_AI_API_KEY` = *[Your Gemini API Key]*
+   * `VITE_SUPABASE_URL` = *[Your Supabase URL]*
+   * `VITE_SUPABASE_ANON_KEY` = *[Your Supabase Anon Key]*
+
+### Step 3: Deploy!
+Click **"Deploy"**. Vercel will build the frontend assets, host the `/api/generate-story` serverless function, and generate a live URL for your choice adventure game.
