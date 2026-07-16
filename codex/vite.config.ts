@@ -76,6 +76,7 @@ export default defineConfig(({ mode }) => {
       target: 'esnext',
       rollupOptions: {
         maxParallelFileOps: 2,
+        cache: false,
       },
     },
   };
