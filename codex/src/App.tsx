@@ -86,7 +86,14 @@ export default function App() {
   return (
     <ThemeBackdrop theme={theme}>
       <div className="min-h-screen text-slate-50">
-        <Navbar sound={sound} theme={theme} walletStatus={game.walletStatus} />
+        <Navbar
+          sound={sound}
+          theme={theme}
+          walletStatus={game.walletStatus}
+          onThemeChange={setSelectedTheme}
+          historyCount={game.history.length}
+          score={game.score}
+        />
 
         <main className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 pb-10 pt-6 sm:px-6 lg:px-8">
           <AnimatePresence mode="wait">
@@ -181,48 +188,53 @@ export default function App() {
 
                   <div className="space-y-6">
                     {game.isComplete ? (
-                      <GameOverRecap
-                        theme={theme}
-                        score={game.score}
-                        history={game.history}
-                        onReset={() => {
-                          setSelectedTheme(null);
-                          game.reset();
-                        }}
-                      >
-                        <MintCertificateButton
+                      <>
+                        <GameOverRecap
                           theme={theme}
                           score={game.score}
                           history={game.history}
-                          walletAddress={game.walletAddress}
-                          onMinted={setMintedTxHash}
-                        />
-                      </GameOverRecap>
+                          onReset={() => {
+                            setSelectedTheme(null);
+                            game.reset();
+                          }}
+                        >
+                          <MintCertificateButton
+                            theme={theme}
+                            score={game.score}
+                            history={game.history}
+                            walletAddress={game.walletAddress}
+                            onMinted={setMintedTxHash}
+                          />
+                        </GameOverRecap>
+                        <Leaderboard theme={theme} refreshKey={leaderboardTick} />
+                      </>
                     ) : (
-                      <div
-                        className="glass-panel neon-border p-5 sm:p-6"
-                        style={{ '--accent': theme.accent, '--glow': theme.glow } as React.CSSProperties}
-                      >
-                        <p className="text-sm uppercase tracking-[0.3em] text-white/50">Adventure feed</p>
-                        <p className="mt-2 text-sm text-white/70">
-                          Choose a card to continue. Gemini will keep the thread coherent by remembering your prior path.
-                        </p>
-                      </div>
+                      <>
+                        <div
+                          className="glass-panel neon-border p-5 sm:p-6"
+                          style={{ '--accent': theme.accent, '--glow': theme.glow } as React.CSSProperties}
+                        >
+                          <p className="text-sm uppercase tracking-[0.3em] text-white/50">Adventure feed</p>
+                          <p className="mt-2 text-sm text-white/70">
+                            Choose a card to continue. Gemini will keep the thread coherent by remembering your prior path.
+                          </p>
+                        </div>
+                        <Leaderboard theme={theme} refreshKey={leaderboardTick} />
+                      </>
                     )}
                   </div>
                 </div>
 
-                <div className={`grid gap-6 items-start ${mintedTxHash ? 'lg:grid-cols-2' : 'grid-cols-1 max-w-2xl mx-auto w-full'}`}>
-                  {mintedTxHash && (
+                {mintedTxHash && (
+                  <div className="max-w-2xl mx-auto w-full">
                     <CertificateCard
                       theme={theme}
                       score={game.score}
                       history={game.history}
                       txHash={mintedTxHash}
                     />
-                  )}
-                  <Leaderboard theme={theme} refreshKey={leaderboardTick} />
-                </div>
+                  </div>
+                )}
                 {saveStatus ? <p className="text-sm text-white/60 text-center">{saveStatus}</p> : null}
               </motion.section>
             )}

@@ -70,7 +70,10 @@ export function Leaderboard({ theme, refreshKey = 0 }: { theme: AdventureTheme; 
         <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/55" style={{ color: theme.accent }}>Live</span>
       </div>
 
-      <div className="mt-4 space-y-3">
+      <div
+        className="mt-4 space-y-3 max-h-[360px] overflow-y-auto pr-1.5 custom-scrollbar"
+        style={{ '--accent': theme.accent, '--glow': theme.glow } as React.CSSProperties}
+      >
         {loading ? <p className="text-sm text-white/55">Loading leaderboard...</p> : null}
         {error ? <p className="text-sm text-red-300">{error}</p> : null}
         {!loading && !error && rows.length === 0 ? <p className="text-sm text-white/55">No entries yet. Be the first to finish.</p> : null}

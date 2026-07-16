@@ -85,4 +85,24 @@
   .holo-glare:hover::before {
     transform: rotate(-45deg) translate(30%, 30%);
   }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 9999px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--accent, rgba(255, 255, 255, 0.15));
+    border-radius: 9999px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--glow);
+  }
 }
