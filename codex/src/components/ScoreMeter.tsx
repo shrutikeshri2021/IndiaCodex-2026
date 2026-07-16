@@ -5,7 +5,10 @@ export function ScoreMeter({ score, accent }: { score: number; accent: string })
   const fill = Math.min(100, Math.max(8, positive * 4));
 
   return (
-    <div className="glass-subtle p-4">
+    <div
+      className="glass-subtle neon-border p-4"
+      style={{ '--accent': accent, '--glow': `${accent}33` } as React.CSSProperties}
+    >
       <div className="flex items-center justify-between text-xs uppercase tracking-[0.28em] text-white/45">
         <span>Fate Points</span>
         <span>{score}</span>

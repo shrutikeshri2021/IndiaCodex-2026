@@ -98,9 +98,12 @@ export default function App() {
                 exit={{ opacity: 0, y: -20 }}
                 className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]"
               >
-                <div className="glass-panel p-6 sm:p-8">
+                <div
+                  className="glass-panel neon-border p-6 sm:p-8"
+                  style={{ '--accent': '#7000FF', '--glow': 'rgba(112, 0, 255, 0.25)' } as React.CSSProperties}
+                >
                   <p className="text-sm uppercase tracking-[0.3em] text-slate-300/70">AI Choice Adventure</p>
-                  <h1 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight sm:text-6xl">
+                  <h1 className="mt-4 max-w-2xl text-4xl font-extrabold leading-tight sm:text-6xl bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-500 bg-clip-text text-transparent">
                     Pick a realm. Let Gemini bend the story. Earn a testnet certificate.
                   </h1>
                   <p className="mt-4 max-w-2xl text-base text-slate-200/75 sm:text-lg">
@@ -127,7 +130,10 @@ export default function App() {
               >
                 <div className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
                   <div className="space-y-6">
-                    <div className="glass-panel p-5 sm:p-6">
+                    <div
+                      className="glass-panel neon-border p-5 sm:p-6"
+                      style={{ '--accent': theme.accent, '--glow': theme.glow } as React.CSSProperties}
+                    >
                       <div className="flex flex-wrap items-center justify-between gap-3">
                         <div>
                           <p className="text-xs uppercase tracking-[0.32em] text-white/55">Theme</p>
@@ -193,7 +199,10 @@ export default function App() {
                         />
                       </GameOverRecap>
                     ) : (
-                      <div className="glass-panel p-5 sm:p-6">
+                      <div
+                        className="glass-panel neon-border p-5 sm:p-6"
+                        style={{ '--accent': theme.accent, '--glow': theme.glow } as React.CSSProperties}
+                      >
                         <p className="text-sm uppercase tracking-[0.3em] text-white/50">Adventure feed</p>
                         <p className="mt-2 text-sm text-white/70">
                           Choose a card to continue. Gemini will keep the thread coherent by remembering your prior path.

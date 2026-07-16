@@ -10,8 +10,8 @@ export function Navbar({ sound, theme, walletStatus }: { sound: { enabled: boole
           <p className="text-sm text-white/80">Wallet, story, leaderboard, certificate.</p>
         </div>
         <div className="flex items-center gap-3 text-sm text-white/80">
-          <div className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
-            {walletStatus.connected ? 'Wallet ready' : 'Wallet disconnected'}
+          <div className={`rounded-full border px-3 py-1.5 text-xs transition-all ${walletStatus.connected ? 'border-emerald-500/30 text-emerald-400 bg-emerald-500/10 shadow-[0_0_10px_rgba(16,185,129,0.15)] font-semibold' : 'border-white/10 text-white/50 bg-white/5'}`}>
+            {walletStatus.connected ? '● Wallet Ready' : '○ Disconnected'}
           </div>
           <button
             className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 transition hover:bg-white/10"

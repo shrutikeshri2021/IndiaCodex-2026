@@ -9,7 +9,8 @@ export function ThemeSelect({ themes, onPick }: { themes: AdventureTheme[]; onPi
           key={theme.key}
           whileHover={{ y: -8, rotate: index % 2 === 0 ? -1.5 : 1.5 }}
           whileTap={{ scale: 0.98 }}
-          className="glass-panel card-hover overflow-hidden p-5 text-left"
+          className="glass-panel neon-border holo-glare card-hover overflow-hidden p-5 text-left"
+          style={{ '--accent': theme.accent, '--glow': theme.glow } as React.CSSProperties}
           onClick={() => onPick(theme)}
         >
           <div className="flex items-start justify-between gap-4">

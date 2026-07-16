@@ -20,7 +20,12 @@ export function StoryCard({ text, theme }: { text: string; theme: AdventureTheme
   }, [text]);
 
   return (
-    <motion.div className="glass-panel min-h-[180px] p-5 sm:p-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+    <motion.div
+      className="glass-panel neon-border min-h-[180px] p-5 sm:p-6"
+      style={{ '--accent': theme.accent, '--glow': theme.glow } as React.CSSProperties}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <p className="text-xs uppercase tracking-[0.3em]" style={{ color: theme.accent }}>The story unfolds</p>
       <p className="mt-3 text-lg leading-relaxed text-white/90">
         {visible}

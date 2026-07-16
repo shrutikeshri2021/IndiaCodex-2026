@@ -150,7 +150,10 @@ export function CertificateCard({
   };
 
   return (
-    <div className="glass-panel p-5 sm:p-6 space-y-4">
+    <div
+      className="glass-panel neon-border p-5 sm:p-6 space-y-4"
+      style={{ '--accent': theme.accent, '--glow': theme.glow } as React.CSSProperties}
+    >
       <div className="flex items-center justify-between">
         <div>
           <p className="text-xs uppercase tracking-[0.3em] text-white/45">Your Reward</p>
@@ -158,7 +161,8 @@ export function CertificateCard({
         </div>
         <button
           onClick={handleDownload}
-          className="rounded-full bg-emerald-500 hover:bg-emerald-600 px-4 py-1.5 text-xs font-semibold text-white transition shadow-sm"
+          className="rounded-full px-4 py-1.5 text-xs font-semibold text-black transition shadow-sm hover:opacity-90 active:scale-95 text-glow"
+          style={{ backgroundColor: theme.accent, textShadow: 'none' }}
         >
           Download PNG
         </button>

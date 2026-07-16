@@ -58,7 +58,10 @@ export function Leaderboard({ theme, refreshKey = 0 }: { theme: AdventureTheme; 
   }, [refreshKey]);
 
   return (
-    <div className="glass-panel p-5 sm:p-6">
+    <div
+      className="glass-panel neon-border p-5 sm:p-6"
+      style={{ '--accent': theme.accent, '--glow': theme.glow } as React.CSSProperties}
+    >
       <div className="flex items-center justify-between gap-3">
         <div>
           <p className="text-xs uppercase tracking-[0.3em] text-white/45">Leaderboard</p>
@@ -72,7 +75,7 @@ export function Leaderboard({ theme, refreshKey = 0 }: { theme: AdventureTheme; 
         {error ? <p className="text-sm text-red-300">{error}</p> : null}
         {!loading && !error && rows.length === 0 ? <p className="text-sm text-white/55">No entries yet. Be the first to finish.</p> : null}
         {rows.map((row) => (
-          <div key={`${row.name}-${row.created_at}`} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3">
+          <div key={`${row.name}-${row.created_at}`} className="flex items-center gap-3 rounded-2xl border border-white/5 bg-white/5 p-3 hover:border-white/20 hover:bg-white/10 transition-all">
             <IdenticonAvatar address={row.name} />
             <div className="min-w-0 flex-1">
               <p className="truncate text-sm font-medium text-white/90">{shortAddress(row.name)}</p>

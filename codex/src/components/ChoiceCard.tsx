@@ -6,7 +6,8 @@ export function ChoiceCard({ option, accent, disabled, onPick }: { option: Adven
     <motion.button
       whileHover={{ y: -6, rotateX: 6, rotateY: -6, scale: disabled ? 1 : 1.02 }}
       whileTap={{ scale: 0.98 }}
-      className="glass-panel group min-h-[168px] text-left"
+      className="glass-panel neon-border holo-glare group min-h-[168px] text-left"
+      style={{ '--accent': accent, '--glow': `${accent}40` } as React.CSSProperties}
       onClick={onPick}
       disabled={disabled}
     >
